@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CA945D
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrestParser", "..\CrestParser\CrestParser\CrestParser.csproj", "{0AAB9927-7938-4121-A0C0-BD7C9E12D60F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrestParser.Test", "..\CrestParser\CrestParser.Test\CrestParser.Test.csproj", "{AA3A5C04-EC79-43D9-B97F-7F4BB457E41E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +32,14 @@ Global
 		{290867D4-F3CA-473B-82A0-C8E91FCF31A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{290867D4-F3CA-473B-82A0-C8E91FCF31A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{290867D4-F3CA-473B-82A0-C8E91FCF31A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAB9927-7938-4121-A0C0-BD7C9E12D60F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAB9927-7938-4121-A0C0-BD7C9E12D60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAB9927-7938-4121-A0C0-BD7C9E12D60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAB9927-7938-4121-A0C0-BD7C9E12D60F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA3A5C04-EC79-43D9-B97F-7F4BB457E41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA3A5C04-EC79-43D9-B97F-7F4BB457E41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA3A5C04-EC79-43D9-B97F-7F4BB457E41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA3A5C04-EC79-43D9-B97F-7F4BB457E41E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
