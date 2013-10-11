@@ -9,10 +9,10 @@ using DustTimers.Web.Data.Configuration;
 
 namespace DustTimers.Web.Data
 {
-    public class DustTimerDbContext : DbContext
+    public class DustTimersDbContext : DbContext
     {
 
-        public DustTimerDbContext()
+        public DustTimersDbContext()
             : base("DefaultConnection") { }
         
         // Tables

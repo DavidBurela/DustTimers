@@ -158,13 +158,16 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\Configuration\DistrictConfiguration.cs" />
-    <Compile Include="Data\DustTimerDbContext.cs" />
+    <Compile Include="Data\DustTimersDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EFRepository.cs" />
+    <Compile Include="Repositories\IEFRepository.cs" />
+    <Compile Include="Repositories\Uow\DustTimersUow.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
