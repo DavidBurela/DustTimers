@@ -4,9 +4,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace DustTimers.Web.Data.Configuration
 {
-    public class DistrictConfiguration : EntityTypeConfiguration<District>
+    public class PlanetConfiguration : EntityTypeConfiguration<Planet>
     {
-        public DistrictConfiguration()
+        public PlanetConfiguration()
         {
             Property(f => f.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }

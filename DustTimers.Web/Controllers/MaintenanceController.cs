@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -28,11 +29,18 @@ namespace DustTimers.Web.Controllers
             {
                 await DustTimersUow.UpdateDistrictsWithLatestCrestData();
                 await DustTimersUow.UpdateCorpTickers();
+
+                var stopWatch = new Stopwatch();
+                stopWatch.Start();
                 DustTimersUow.Commit();
+                stopWatch.Stop();
+                var time = stopWatch.ElapsedTicks;
+                Console.WriteLine("Insertion time: " + time);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                throw;
             }
             return View();
         }

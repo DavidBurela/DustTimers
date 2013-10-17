@@ -28,7 +28,14 @@ namespace DustTimers.Web.Data
             // Set the database schema so that it works in a multi-tenant environment.
             modelBuilder.HasDefaultSchema("DustTimers");
 
+            // Set column defaults & relationships
+            modelBuilder.Configurations.Add(new ConstellationConfiguration());
             modelBuilder.Configurations.Add(new DistrictConfiguration());
+            modelBuilder.Configurations.Add(new InfrastructureConfiguration());
+            modelBuilder.Configurations.Add(new OwnerConfiguration());
+            modelBuilder.Configurations.Add(new PlanetConfiguration());
+            modelBuilder.Configurations.Add(new RegionConfiguration());
+            modelBuilder.Configurations.Add(new SystemConfiguration());
         }
     }
 

@@ -13,14 +13,27 @@ namespace DustTimers.Web.Repositories.Uow
     {
         private DustTimersDbContext DbContext { get; set; }
 
+        // Repositories
+        public IEFRepository<Constellation> ConstellationRepository { get; set; }
         public IEFRepository<District> DistrictRepository { get; set; }
+        public IEFRepository<Infrastructure> InfrastructureRepository { get; set; }
+        public IEFRepository<Owner> OwnerRepository { get; set; }
+        public IEFRepository<Planet> PlanetRepository { get; set; }
+        public IEFRepository<Region> RegionRepository { get; set; }
+        public IEFRepository<CrestParser.Models.System> SystemRepository { get; set; }
 
         public DustTimersUow()
         {
             CreateDbContext();
 
             // Should be IOC
+            ConstellationRepository = new EFRepository<Constellation>(DbContext);
             DistrictRepository = new EFRepository<District>(DbContext);
+            InfrastructureRepository = new EFRepository<Infrastructure>(DbContext);
+            OwnerRepository = new EFRepository<Owner>(DbContext);
+            PlanetRepository = new EFRepository<Planet>(DbContext);
+            RegionRepository = new EFRepository<Region>(DbContext);
+            SystemRepository = new EFRepository<CrestParser.Models.System>(DbContext);
         }
 
         protected void CreateDbContext()
@@ -58,6 +71,25 @@ namespace DustTimers.Web.Repositories.Uow
                     DistrictRepository.Add(currentDistrict);
                 }
 
+                // Search for each entity so that we can just link, rather than re-adding
+                var constellation = ConstellationRepository.GetById(crestDistrict.Constellation.Id) ??
+                                    crestDistrict.Constellation;
+
+                var infrastructure = InfrastructureRepository.GetById(crestDistrict.Infrastructure.Id) ??
+                                    crestDistrict.Infrastructure;
+
+                var owner = OwnerRepository.GetById(crestDistrict.Owner.Id) ??
+                                    crestDistrict.Owner;
+
+                var planet = PlanetRepository.GetById(crestDistrict.Planet.Id) ??
+                                    crestDistrict.Planet;
+
+                var region = RegionRepository.GetById(crestDistrict.Region.Id) ??
+                                    crestDistrict.Region;
+
+                var planetSystem = SystemRepository.GetById(crestDistrict.System.Id) ??
+                                    crestDistrict.System;
+                
                 // Set each property manually. 
                 // TODO: There must be a nicer way to automater this later
                 currentDistrict.Attacked = crestDistrict.Attacked;
@@ -68,25 +100,25 @@ namespace DustTimers.Web.Repositories.Uow
                 currentDistrict.Clones = crestDistrict.Clones;
                 currentDistrict.Clones_str = crestDistrict.Clones_str;
                 currentDistrict.Conquerable = crestDistrict.Conquerable;
-                currentDistrict.Constellation = crestDistrict.Constellation;
+                currentDistrict.Constellation = constellation;
                 currentDistrict.Generating = crestDistrict.Generating;
                 currentDistrict.Href = crestDistrict.Href;
                 currentDistrict.Id = crestDistrict.Id;
                 currentDistrict.Id_str = crestDistrict.Id_str;
                 currentDistrict.Index = crestDistrict.Index;
                 currentDistrict.Index_str = crestDistrict.Index_str;
-                currentDistrict.Infrastructure = crestDistrict.Infrastructure;
+                currentDistrict.Infrastructure = infrastructure;
                 currentDistrict.Latitude = crestDistrict.Latitude;
                 currentDistrict.Locked = crestDistrict.Locked;
                 currentDistrict.Longitude = crestDistrict.Longitude;
                 currentDistrict.Name = crestDistrict.Name;
                 currentDistrict.NextReinforce = crestDistrict.NextReinforce;
-                currentDistrict.Owner = crestDistrict.Owner;
-                currentDistrict.Planet = crestDistrict.Planet;
-                currentDistrict.Region = crestDistrict.Region;
+                currentDistrict.Owner = owner;
+                currentDistrict.Planet = planet;
+                currentDistrict.Region = region;
                 currentDistrict.Reinforce = crestDistrict.Reinforce;
                 currentDistrict.Reinforce_str = crestDistrict.Reinforce_str;
-                currentDistrict.System = crestDistrict.System;
+                currentDistrict.System = planetSystem;
             }
             
         }
