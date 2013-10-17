@@ -25,7 +25,10 @@ namespace DustTimers.Web.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            // Set the database schema so that it works in a multi-tenant environment.
             modelBuilder.HasDefaultSchema("DustTimers");
+
+            modelBuilder.Configurations.Add(new DistrictConfiguration());
         }
     }
 

@@ -1,39 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using CrestParser.Models;
+using DustTimers.Web.Repositories;
+using DustTimers.Web.Repositories.Uow;
 
 namespace DustTimers.Web.Controllers
 {
-    public class MaintenanceController : ApiController
+    public class MaintenanceController : Controller
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        public DustTimersUow DustTimersUow { get; set; }
+
+        public MaintenanceController()
         {
-            return new string[] { "value1", "value2" };
+            //TODO: This should be IOC
+            DustTimersUow = new DustTimersUow();
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        //
+        // GET: /Maintenance/UpdateDistricts
+        public async Task<ActionResult> UpdateDistricts()
         {
-            return "value";
+            try
+            {
+                await DustTimersUow.UpdateDistrictsWithLatestCrestData();
+                await DustTimersUow.UpdateCorpTickers();
+                DustTimersUow.Commit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return View();
         }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
-    }
+	}
 }
