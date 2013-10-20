@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DustTimers.Web.Models
 {
@@ -12,6 +13,15 @@ namespace DustTimers.Web.Models
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Set the database schema so that it works in a multi-tenant environment.
+            //DISABLED - this currently isn't supported with automatic migrations
+            //modelBuilder.HasDefaultSchema("DustTimers");
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

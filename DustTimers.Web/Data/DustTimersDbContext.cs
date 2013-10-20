@@ -26,7 +26,8 @@ namespace DustTimers.Web.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Set the database schema so that it works in a multi-tenant environment.
-            modelBuilder.HasDefaultSchema("DustTimers");
+            //DISABLED - this currently isn't supported with automatic migrations
+            //modelBuilder.HasDefaultSchema("DustTimers");
 
             // Set column defaults & relationships
             modelBuilder.Configurations.Add(new ConstellationConfiguration());
@@ -36,6 +37,8 @@ namespace DustTimers.Web.Data
             modelBuilder.Configurations.Add(new PlanetConfiguration());
             modelBuilder.Configurations.Add(new RegionConfiguration());
             modelBuilder.Configurations.Add(new SystemConfiguration());
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 
