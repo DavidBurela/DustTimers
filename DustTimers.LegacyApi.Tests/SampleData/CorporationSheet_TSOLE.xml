@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2013-10-20 11:13:22</currentTime>
+  <result>
+    <corporationID>98145683</corporationID>
+    <corporationName>The Southern Legion</corporationName>
+    <ticker>TSOLE</ticker>
+    <ceoID>1365365717</ceoID>
+    <ceoName>Hunter Blake</ceoName>
+    <stationID>60004882</stationID>
+    <stationName>Aeditide V - Republic Fleet Assembly Plant</stationName>
+    <description>Amongst the very first Hybrid Corporations, The Southern Legion is pushing the boundaries of integration and interaction between DUST 514 and EVE Online. Rapidly growing numbers of Capsuleers and DUST Mercenaries are joining our ranks from all Timezones, and frequent corporate organised battles are but one of the benefits of membership.&lt;br&gt;&lt;br&gt;Please check out our web site at http://www.southernlegion.net, or see our Recruitment Video at http://www.youtube.com/watch?v=Nm89E_EWltY.</description>
+    <url>http://www.southernlegion.net</url>
+    <allianceID>99003584</allianceID>
+    <factionID>0</factionID>
+    <allianceName>The Umbra Combine</allianceName>
+    <taxRate>5</taxRate>
+    <memberCount>507</memberCount>
+    <shares>1000</shares>
+    <logo>
+      <graphicID>0</graphicID>
+      <shape1>423</shape1>
+      <shape2>448</shape2>
+      <shape3>467</shape3>
+      <color1>680</color1>
+      <color2>674</color2>
+      <color3>674</color3>
+    </logo>
+  </result>
+  <cachedUntil>2013-10-20 12:14:57</cachedUntil>
+</eveapi>
