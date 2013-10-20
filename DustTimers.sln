@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.20827.3
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DustTimers.Web", "DustTimers.Web\DustTimers.Web.csproj", "{FC7136EE-B45F-4AD9-B189-665283A52E9F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DustTimers.Web.Tests", "DustTimers.Web.Tests\DustTimers.Web.Tests.csproj", "{290867D4-F3CA-473B-82A0-C8E91FCF31A7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CA945DDD-1CD0-4996-A0D2-585677836648}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -18,20 +14,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrestParser", "..\CrestPars
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrestParser.Test", "..\CrestParser\CrestParser.Test\CrestParser.Test.csproj", "{AA3A5C04-EC79-43D9-B97F-7F4BB457E41E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DustTimers.Web", "DustTimers.Web\DustTimers.Web.csproj", "{84D93ADE-194D-4E80-B75F-93FB4E9429CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DustTimers.Web.Tests", "DustTimers.Web.Tests\DustTimers.Web.Tests.csproj", "{A0FD2E33-8A46-4559-8019-1CC3D214E80B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FC7136EE-B45F-4AD9-B189-665283A52E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC7136EE-B45F-4AD9-B189-665283A52E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC7136EE-B45F-4AD9-B189-665283A52E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC7136EE-B45F-4AD9-B189-665283A52E9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{290867D4-F3CA-473B-82A0-C8E91FCF31A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{290867D4-F3CA-473B-82A0-C8E91FCF31A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{290867D4-F3CA-473B-82A0-C8E91FCF31A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{290867D4-F3CA-473B-82A0-C8E91FCF31A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0AAB9927-7938-4121-A0C0-BD7C9E12D60F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0AAB9927-7938-4121-A0C0-BD7C9E12D60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AAB9927-7938-4121-A0C0-BD7C9E12D60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -40,6 +32,14 @@ Global
 		{AA3A5C04-EC79-43D9-B97F-7F4BB457E41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA3A5C04-EC79-43D9-B97F-7F4BB457E41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA3A5C04-EC79-43D9-B97F-7F4BB457E41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84D93ADE-194D-4E80-B75F-93FB4E9429CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84D93ADE-194D-4E80-B75F-93FB4E9429CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84D93ADE-194D-4E80-B75F-93FB4E9429CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84D93ADE-194D-4E80-B75F-93FB4E9429CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0FD2E33-8A46-4559-8019-1CC3D214E80B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0FD2E33-8A46-4559-8019-1CC3D214E80B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0FD2E33-8A46-4559-8019-1CC3D214E80B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0FD2E33-8A46-4559-8019-1CC3D214E80B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

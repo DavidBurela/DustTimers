@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DustTimers.Web.Models 
+namespace DustTimers.Web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
