@@ -5,6 +5,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 using CrestParser.Models;
+using DustTimers.LegacyApi.Models;
 using DustTimers.Web.Data.Configuration;
 
 namespace DustTimers.Web.Data
@@ -23,6 +24,9 @@ namespace DustTimers.Web.Data
         public DbSet<Region> Regions { get; set; }
         public DbSet<CrestParser.Models.System> Systems { get; set; }
 
+        // Legacy API tables
+        public DbSet<Corporation> Corporations { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Set the database schema so that it works in a multi-tenant environment.
@@ -37,6 +41,8 @@ namespace DustTimers.Web.Data
             modelBuilder.Configurations.Add(new PlanetConfiguration());
             modelBuilder.Configurations.Add(new RegionConfiguration());
             modelBuilder.Configurations.Add(new SystemConfiguration());
+
+            modelBuilder.Configurations.Add(new CorporationConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

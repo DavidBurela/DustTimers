@@ -51,10 +51,10 @@ namespace DustTimers.LegacyApi.Resources
                 corporation.MemberCount = memberCountNode == null ? 0 : Convert.ToInt32(memberCountNode.Value);
 
                 var allianceIdNode = resultNode.Element("allianceID");
-                corporation.AllianceId = memberCountNode == null ? 0 : Convert.ToInt32(allianceIdNode.Value);
+                corporation.AllianceId = allianceIdNode == null ? 0 : Convert.ToInt32(allianceIdNode.Value);
 
                 var allianceNameNode = resultNode.Element("allianceName");
-                corporation.AllianceName = tickerNode == null ? string.Empty : allianceNameNode.Value;
+                corporation.AllianceName = allianceNameNode == null ? string.Empty : allianceNameNode.Value;
 
             }
             return corporation;

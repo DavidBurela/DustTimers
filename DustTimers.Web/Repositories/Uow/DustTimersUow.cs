@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using CrestParser.Models;
 using CrestParser.Resources;
+using DustTimers.LegacyApi.Models;
+using DustTimers.LegacyApi.Resources;
 using DustTimers.Web.Data;
 
 namespace DustTimers.Web.Repositories.Uow
@@ -22,6 +25,8 @@ namespace DustTimers.Web.Repositories.Uow
         public IEFRepository<Region> RegionRepository { get; set; }
         public IEFRepository<CrestParser.Models.System> SystemRepository { get; set; }
 
+        public IEFRepository<Corporation> CorporationRepository { get; set; }
+
         public DustTimersUow()
         {
             CreateDbContext();
@@ -34,6 +39,7 @@ namespace DustTimers.Web.Repositories.Uow
             PlanetRepository = new EFRepository<Planet>(DbContext);
             RegionRepository = new EFRepository<Region>(DbContext);
             SystemRepository = new EFRepository<CrestParser.Models.System>(DbContext);
+            CorporationRepository = new EFRepository<Corporation>(DbContext);
         }
 
         protected void CreateDbContext()
@@ -128,6 +134,23 @@ namespace DustTimers.Web.Repositories.Uow
             // Query EVE Api for each corp without a ticker
             // update each corp with ticker details
 
+            var ownerIds = OwnerRepository.GetAll().Select(p => p.Id);
+            var currentCorpIds = CorporationRepository.GetAll().Select(p => p.Id);
+
+            var missingCorporationIds = ownerIds.Where(p => currentCorpIds.Contains(p) == false);
+
+            foreach (var missingCorporationId in missingCorporationIds)
+            {
+                try
+                {
+                    var corporation = await CorporationResource.GetCorporation(missingCorporationId);
+                    CorporationRepository.Add(corporation);
+                }
+                catch (WebException e)
+                {
+                    // Just continue
+                }
+            }
         }
     }
 }

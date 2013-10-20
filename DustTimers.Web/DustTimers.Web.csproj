@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
+    <Compile Include="Data\Configuration\CorporationConfiguration.cs" />
     <Compile Include="Data\Configuration\ConstellationConfiguration.cs" />
     <Compile Include="Data\Configuration\DistrictConfiguration.cs" />
     <Compile Include="Data\Configuration\InfrastructureConfiguration.cs" />
@@ -272,6 +273,10 @@
     <ProjectReference Include="..\..\CrestParser\CrestParser\CrestParser.csproj">
       <Project>{0aab9927-7938-4121-a0c0-bd7c9e12d60f}</Project>
       <Name>CrestParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DustTimers.LegacyApi\DustTimers.LegacyApi.csproj">
+      <Project>{a5dd1a1f-b13d-43c1-ab80-0203c41ae385}</Project>
+      <Name>DustTimers.LegacyApi</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -21,6 +21,7 @@ namespace DustTimers.Web.Controllers
             DustTimersUow = new DustTimersUow();
         }
 
+        
         //
         // GET: /Maintenance/UpdateDistricts
         public async Task<ActionResult> UpdateDistricts()
@@ -28,21 +29,34 @@ namespace DustTimers.Web.Controllers
             try
             {
                 await DustTimersUow.UpdateDistrictsWithLatestCrestData();
-                await DustTimersUow.UpdateCorpTickers();
-
-                var stopWatch = new Stopwatch();
-                stopWatch.Start();
+                
                 DustTimersUow.Commit();
-                stopWatch.Stop();
-                var time = stopWatch.ElapsedTicks;
-                Console.WriteLine("Insertion time: " + time);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw;
             }
-            return View();
+            return View("UpdateDistricts");
+        }
+
+        //
+        // GET: /Maintenance/UpdateDistrictsAndTickers
+        public async Task<ActionResult> UpdateDistrictsAndTickers()
+        {
+            try
+            {
+                await DustTimersUow.UpdateDistrictsWithLatestCrestData();
+                await DustTimersUow.UpdateCorpTickers();
+
+                DustTimersUow.Commit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            return View("UpdateDistricts");
         }
 	}
 }
