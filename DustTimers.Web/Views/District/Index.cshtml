@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CrestParser.Models.District>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+        <th>
+            UTC (EVE Time)
+        </th>
+        <th>
+            Local Time
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clones)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @(item.Attacked == true ? "Defense" : "")
+        </td>
+        <td>
+            @item.NextReinforce.AsDateTime()
+        </td>
+        <td>
+            @DateTime.Parse(item.NextReinforce).ToLocalTime()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clones)
+            /
+            @Html.DisplayFor(modelItem => item.CloneCapacity)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+        </td>
+    </tr>
+}
+
+</table>

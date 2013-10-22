@@ -1,0 +1,179 @@
+﻿@model CrestParser.Models.District
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>District</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CloneRate_str)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CloneRate_str)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Generating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Generating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reinforce)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reinforce)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Href)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Href)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Conquerable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Conquerable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextReinforce)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextReinforce)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Index)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Index)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_str)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_str)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CloneCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CloneCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CloneCapacity_str)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CloneCapacity_str)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reinforce_str)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reinforce_str)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attacked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attacked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CloneRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CloneRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Index_str)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Index_str)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Locked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Locked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clones_str)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clones_str)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
