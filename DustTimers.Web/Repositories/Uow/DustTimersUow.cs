@@ -18,7 +18,7 @@ namespace DustTimers.Web.Repositories.Uow
 
         // Repositories
         public IEFRepository<Constellation> ConstellationRepository { get; set; }
-        public IEFRepository<District> DistrictRepository { get; set; }
+        public DistrictRepository DistrictRepository { get; set; }
         public IEFRepository<Infrastructure> InfrastructureRepository { get; set; }
         public IEFRepository<Owner> OwnerRepository { get; set; }
         public IEFRepository<Planet> PlanetRepository { get; set; }
@@ -33,7 +33,7 @@ namespace DustTimers.Web.Repositories.Uow
 
             // Should be IOC
             ConstellationRepository = new EFRepository<Constellation>(DbContext);
-            DistrictRepository = new EFRepository<District>(DbContext);
+            DistrictRepository = new DistrictRepository(DbContext);
             InfrastructureRepository = new EFRepository<Infrastructure>(DbContext);
             OwnerRepository = new EFRepository<Owner>(DbContext);
             PlanetRepository = new EFRepository<Planet>(DbContext);

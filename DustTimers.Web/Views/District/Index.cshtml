@@ -1,16 +1,79 @@
-﻿@model IEnumerable<CrestParser.Models.District>
+﻿@using DustTimers.LegacyApi.Models
+@model DustTimers.Web.Models.DistrictTickerViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Upcoming battles</h2>
 
+@if (Model.Districts.Count(p => p.Attacked) == 0)
+{
+    <p>No upcoming battles</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                District
+            </th>
+            <th></th>
+            <th>
+                UTC (EVE Time)
+            </th>
+            <th>
+                Local Time
+            </th>
+            <th>
+                Clones
+            </th>
+            <th>
+                Infrastructure
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Districts.Where(p => p.Attacked == true).OrderBy(p => p.Owner.Id).ThenBy(p => p.Name))
+        {
+            <tr>
+                <td>
+                    @{ var ticker = Model.Corporations.First(p => p.Id == item.Owner.Id).Ticker;}
+                    @Html.ActionLink(ticker, "Ticker", new { id = ticker })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @(item.Attacked == true ? "Defense" : "")
+                </td>
+                <td>
+                    @{ DateTime time = DateTime.Parse(item.NextReinforce);}
+                    @(time.ToShortDateString() + " " + time.ToString("hhmm"))
+                </td>
+                <td>
+                    @(time.ToLocalTime().ToShortDateString() + " " + time.ToLocalTime().ToShortTimeString())
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Clones)
+                    /
+                    @Html.DisplayFor(modelItem => item.CloneCapacity)
+                </td>
+                <td>
+                    @(item.Infrastructure.Name)
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+<h2>Owned districts</h2>
 <table class="table">
     <tr>
+        <th></th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            District
         </th>
         <th></th>
         <th>
@@ -20,30 +83,41 @@
             Local Time
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Clones)
+            Clones
+        </th>
+        <th>
+            Infrastructure
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @(item.Attacked == true ? "Defense" : "")
-        </td>
-        <td>
-            @item.NextReinforce.AsDateTime()
-        </td>
-        <td>
-            @DateTime.Parse(item.NextReinforce).ToLocalTime()
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Clones)
-            /
-            @Html.DisplayFor(modelItem => item.CloneCapacity)
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model.Districts.OrderBy(p => p.Owner.Id).ThenBy(p => p.Name))
+    {
+        <tr>
+            <td>
+                @{ var ticker = Model.Corporations.First(p => p.Id == item.Owner.Id).Ticker;}
+                @Html.ActionLink(ticker, "Ticker", new { id = ticker })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @(item.Attacked == true ? "Under Attack" : "")
+            </td>
+            <td>
+                @{ DateTime time = DateTime.Parse(item.NextReinforce);}
+                @(time.ToShortDateString() + " " + time.ToString("hhmm"))
+            </td>
+            <td>
+                @(time.ToLocalTime().ToShortDateString() + " " + time.ToLocalTime().ToShortTimeString())
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clones)
+                /
+                @Html.DisplayFor(modelItem => item.CloneCapacity)
+            </td>
+            <td>
+                @(item.Infrastructure.Name)
+            </td>
+        </tr>
+    }
 </table>

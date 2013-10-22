@@ -14,6 +14,12 @@ namespace DustTimers.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "District",
+                url: "district",
+                defaults: new { controller = "District", action = "Index" }
+            ); 
+
+            routes.MapRoute(
                 name: "Ticker",
                 url: "{id}",
                 defaults: new { controller = "District", action = "Ticker"}

@@ -8,7 +8,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CrestParser.Models;
+using DustTimers.LegacyApi.Models;
 using DustTimers.Web.Data;
+using DustTimers.Web.Models;
 using DustTimers.Web.Repositories.Uow;
 
 namespace DustTimers.Web.Controllers
@@ -25,7 +27,12 @@ namespace DustTimers.Web.Controllers
         // GET: /District/
         public async Task<ActionResult> Index()
         {
-            return View(await DustTimersUow.DistrictRepository.GetAll().ToListAsync());
+            var corporations = await DustTimersUow.CorporationRepository.GetAll().ToListAsync();
+            
+            var viewModel = new DistrictTickerViewModel();
+            viewModel.Districts = await DustTimersUow.DistrictRepository.GetAllWithDetails().ToListAsync();
+            viewModel.Corporations = corporations;
+            return View("Index", viewModel);
         }
 
         // GET: /District/Ticker/5
@@ -41,12 +48,16 @@ namespace DustTimers.Web.Controllers
                 return HttpNotFound();
             }
 
-            var districts = await DustTimersUow.DistrictRepository.GetAll().Where(p => p.Owner.Id == corporation.Id).ToListAsync();
+            var districts = await DustTimersUow.DistrictRepository.GetAllWithDetails().Where(p => p.Owner.Id == corporation.Id).ToListAsync();
             if (districts == null)
             {
                 return HttpNotFound();
             }
-            return View("Index", districts);
+
+            var viewModel = new DistrictTickerViewModel();
+            viewModel.Districts = districts;
+            viewModel.Corporations = new List<Corporation> {corporation};
+            return View("Index", viewModel);
         }
 
     }

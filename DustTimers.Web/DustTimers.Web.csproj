@@ -200,7 +200,9 @@
     <Compile Include="Migrations\DustTimersDbConfiguration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\DistrictTickerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DistrictRepository.cs" />
     <Compile Include="Repositories\EFRepository.cs" />
     <Compile Include="Repositories\IEFRepository.cs" />
     <Compile Include="Repositories\Uow\DustTimersUow.cs" />
