@@ -51,7 +51,7 @@ else
                 <td>
                     @* UTC *@
                     @{ DateTime time = DateTime.Parse(item.NextReinforce);}
-                    @(time.ToShortDateString() + " " + time.ToString("hhmm"))
+                    @(time.ToString("yyyy/M/d hhmm"))
                 </td>
                 <td>
                     @*Local time*@
@@ -108,7 +108,7 @@ else
             <td>
                 @* UTC *@
                 @{ DateTime time = DateTime.Parse(item.NextReinforce);}
-                @(time.ToShortDateString() + " " + time.ToString("hhmm"))
+                @(time.ToString("yyyy/M/d hhmm"))
             </td>
             <td>
                 @*Local time*@
@@ -132,7 +132,18 @@ else
     <script>
         var convertFunction = function (timeElement) {
             var time = new Date($(timeElement).text());
-            return time.toLocaleDateString() + " " + time.toLocaleTimeString().replace(":‎00‎ ‎", " ");
+            
+            var weekday = new Array(7);
+            weekday[0] = "Sun";
+            weekday[1] = "Mon";
+            weekday[2] = "Tue";
+            weekday[3] = "Wed";
+            weekday[4] = "Thu";
+            weekday[5] = "Fri";
+            weekday[6] = "Sat";
+            var day = weekday[time.getDay()];
+
+            return day + " " + time.toLocaleTimeString().replace(":‎00‎ ‎", " ");
         };
 
         $("time").each(function () {
