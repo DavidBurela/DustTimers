@@ -49,12 +49,14 @@ else
                     @(item.Attacked == true ? "Defense" : "")
                 </td>
                 <td>
+                    @* UTC *@
                     @{ DateTime time = DateTime.Parse(item.NextReinforce);}
                     @(time.ToShortDateString() + " " + time.ToString("hhmm"))
                 </td>
                 <td>
-                    @(time.ToLocalTime().ToShortDateString() + " " + time.ToLocalTime().ToShortTimeString())
-                </td>
+                    @*Local time*@
+                    @{ var localTimeUtc = time.ToString("yyyy/MM/dd hh:mm UTC");}
+                    <time>@localTimeUtc</time>
                 <td>
                     @Html.DisplayFor(modelItem => item.Clones)
                     /
@@ -104,11 +106,14 @@ else
                 @(item.Attacked == true ? "Under Attack" : "")
             </td>
             <td>
+                @* UTC *@
                 @{ DateTime time = DateTime.Parse(item.NextReinforce);}
                 @(time.ToShortDateString() + " " + time.ToString("hhmm"))
             </td>
             <td>
-                @(time.ToLocalTime().ToShortDateString() + " " + time.ToLocalTime().ToShortTimeString())
+                @*Local time*@
+                @{ var localTimeUtc = time.ToString("yyyy/MM/dd hh:mm UTC");}
+                <time>@localTimeUtc</time>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Clones)
@@ -121,3 +126,17 @@ else
         </tr>
     }
 </table>
+
+@section scripts
+{
+    <script>
+        var convertFunction = function (timeElement) {
+            var time = new Date($(timeElement).text());
+            return time.toLocaleDateString() + " " + time.toLocaleTimeString().replace(":‎00‎ ‎", " ");
+        };
+
+        $("time").each(function () {
+            $(this).text(convertFunction(this));
+        });
+    </script>
+}
