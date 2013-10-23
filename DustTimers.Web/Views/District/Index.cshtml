@@ -35,12 +35,15 @@ else
             </th>
         </tr>
 
-        @foreach (var item in Model.Districts.Where(p => p.Attacked == true).OrderBy(p => p.Owner.Id).ThenBy(p => p.Name))
+        @foreach (var item in Model.Districts.Where(p => p.Attacked == true).OrderBy(p => p.NextReinforce))
         {
             <tr>
                 <td>
-                    @{ var ticker = Model.Corporations.First(p => p.Id == item.Owner.Id).Ticker;}
-                    @Html.ActionLink(ticker, "Ticker", new { id = ticker })
+                    @{ var corp = Model.Corporations.FirstOrDefault(p => p.Id == item.Owner.Id);}
+                    @if (corp != null)
+                    {
+                        @Html.ActionLink(corp.Ticker, "Ticker", new { id = corp.Ticker });
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
@@ -96,8 +99,11 @@ else
     {
         <tr>
             <td>
-                @{ var ticker = Model.Corporations.First(p => p.Id == item.Owner.Id).Ticker;}
-                @Html.ActionLink(ticker, "Ticker", new { id = ticker })
+                @{ var corp = Model.Corporations.FirstOrDefault(p => p.Id == item.Owner.Id);}
+                @if (corp != null)
+                {
+                    @Html.ActionLink(corp.Ticker, "Ticker", new { id = corp.Ticker });
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -132,7 +138,7 @@ else
     <script>
         var convertFunction = function (timeElement) {
             var time = new Date($(timeElement).text());
-            
+
             var weekday = new Array(7);
             weekday[0] = "Sun";
             weekday[1] = "Mon";
