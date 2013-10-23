@@ -1,31 +1,68 @@
-﻿@{
+﻿@using System.Web.UI.WebControls
+@using Microsoft.Ajax.Utilities
+@model DustTimers.Web.Models.HomeViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    <h1>Dust Timers</h1>
+    <p class="lead">Quickly discover what times you need to be online for PC battles</p>
+    @*<p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>*@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <h2>Getting started</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Click a corp ticker to view the upcoming battles. Bookmark and pin your corp's page to your phone's home screen so you can quickly check upcoming battles while away from DUST.
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p>
+            EVE Online pilots can also use this as a quick way of knowing when to provide Orbital support.
+        </p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Did you know?</h2>
+        <p>You can quickly access a corp if you know the ticker. <br />e.g. [D-UNI] would be <a href="http://DustTimers.com/D-UNI">http://DustTimers.com/D-UNI</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>
+            Corporations
+        </h2>
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Corporation</th>
+                <th>
+                    under attack
+                </th>
+                <th>
+                    total districts
+                </th>
+            </tr>
+
+            @foreach (var corpDistrictDetails in Model.CorpDistrictDetails.OrderByDescending(p => p.DistrictsTotal))
+            {
+                <tr>
+                    <td>
+                        <img src="@(string.Format(@"http://image.eveonline.com/Corporation/{0}_{1}.png", corpDistrictDetails.CorporationId, 32))" />
+                        @if (corpDistrictDetails.Ticker != null)
+                        {
+                            @Html.ActionLink(corpDistrictDetails.Ticker, "Ticker", "District", new { id = corpDistrictDetails.Ticker }, null);
+                        }
+                    </td>
+                    <td>
+                        @corpDistrictDetails.CorporationName
+                    <td>
+                        @corpDistrictDetails.DistrictsUnderAttack
+                    </td>
+                    <td>
+                        @corpDistrictDetails.DistrictsTotal
+                    </td>
+                </tr>
+            }
+        </table>
     </div>
 </div>
