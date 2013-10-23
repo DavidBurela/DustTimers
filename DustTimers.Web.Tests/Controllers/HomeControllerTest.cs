@@ -38,6 +38,5 @@ namespace DustTimers.Web.Tests.Controllers
             // Assert
             Assert.AreEqual("Your application description page.", result.ViewBag.Message);
         }
-
     }
 }
