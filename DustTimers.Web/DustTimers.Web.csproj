@@ -278,7 +278,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CrestParser\CrestParser\CrestParser.csproj">
+    <ProjectReference Include="..\CrestParser\CrestParser.csproj">
       <Project>{0aab9927-7938-4121-a0c0-bd7c9e12d60f}</Project>
       <Name>CrestParser</Name>
     </ProjectReference>
