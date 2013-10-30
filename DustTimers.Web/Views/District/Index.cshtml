@@ -82,7 +82,7 @@ else
         </th>
         <th></th>
         <th>
-            UTC (EVE Time)
+            Reinforcement
         </th>
         <th>
             Local Time
@@ -114,12 +114,12 @@ else
             <td>
                 @* UTC *@
                 @{ DateTime time = DateTime.Parse(item.NextReinforce);}
-                @(time.ToString("yyyy/M/d hhmm"))
+                @(time.ToString("hhmm"))
             </td>
             <td>
                 @*Local time*@
                 @{ var localTimeUtc = time.ToString("yyyy/MM/dd hh:mm UTC");}
-                <time>@localTimeUtc</time>
+                <time data-timeformat="time">@localTimeUtc</time>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Clones)
@@ -137,6 +137,7 @@ else
 {
     <script>
         var convertFunction = function (timeElement) {
+            var timeformatAttr = $(timeElement).attr("data-timeformat");
             var time = new Date($(timeElement).text());
 
             var weekday = new Array(7);
@@ -149,7 +150,14 @@ else
             weekday[6] = "Sat";
             var day = weekday[time.getDay()];
 
-            return day + " " + time.toLocaleTimeString().replace(":‎00‎ ‎", " ");
+            var result = "";
+            if(timeformatAttr == null )
+                result = day + " " + time.toLocaleTimeString().replace(":00:‎00‎‎", ":00");
+            
+            if (timeformatAttr === "time")
+                result += time.toLocaleTimeString().replace(":00:‎00‎‎", ":00");
+
+            return result;
         };
 
         $("time").each(function () {
