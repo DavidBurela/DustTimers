@@ -6,6 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<p class="h4">
+    <span class="glyphicon glyphicon-flag"></span> Vote <b>Xp3ll3d Dust</b> for CPM1 to help expand the functionality of this site.
+<br/><a href="https://forums.dust514.com/default.aspx?g=posts&m=2192488">https://forums.dust514.com/default.aspx?g=posts&m=2192488</a></p>
+
 <h2>Upcoming battles</h2>
 
 @if (Model.Districts.Count(p => p.Attacked) == 0)
@@ -151,9 +155,9 @@ else
             var day = weekday[time.getDay()];
 
             var result = "";
-            if(timeformatAttr == null )
+            if (timeformatAttr == null)
                 result = day + " " + time.toLocaleTimeString().replace(":00:‎00‎‎", ":00");
-            
+
             if (timeformatAttr === "time")
                 result += time.toLocaleTimeString().replace(":00:‎00‎‎", ":00");
 
