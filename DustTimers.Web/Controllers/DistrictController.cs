@@ -55,6 +55,7 @@ namespace DustTimers.Web.Controllers
             }
 
             var viewModel = new DistrictTickerViewModel();
+            viewModel.Ticker = id;
             viewModel.Districts = districts;
             viewModel.Corporations = new List<Corporation> {corporation};
             return View("Index", viewModel);

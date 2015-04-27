@@ -9,6 +9,7 @@ namespace DustTimers.Web.Models
 {
     public class DistrictTickerViewModel
     {
+        public string Ticker { get; set; }
         public List<District> Districts { get; set; }
         public List<Corporation> Corporations { get; set; }
     }
